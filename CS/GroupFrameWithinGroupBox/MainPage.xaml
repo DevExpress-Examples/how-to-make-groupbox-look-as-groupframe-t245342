@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="GroupFrameWithinGroupBox.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+	xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+	xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Style x:Key="groupBoxStyle" TargetType="dxlc:GroupBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="dxlc:GroupBox">
+                        <dx:GroupFrame Header="{TemplateBinding Header}" HeaderTemplate="{TemplateBinding HeaderTemplate}" 
+                                       Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}">
+
+                        </dx:GroupFrame>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <dxlc:LayoutControl x:Name="layoutControl1" Orientation="Vertical" VerticalAlignment="Top">
+            <dxlc:LayoutGroup Header="Way 1: LayoutGroup.View = GroupBox" View="GroupBox" Orientation="Vertical">
+                <dxlc:LayoutGroup Header="Group 1 1111" View="GroupBox">
+                    <dxlc:LayoutItem Label="Item 1 2352365">
+                        <dxe:TextEdit Text="Some Text" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Item 2">
+                        <dxe:TextEdit Text="Some Text" />
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup Header="Group 2" View="GroupBox">
+                    <dxlc:LayoutItem Label="Item 3 1">
+                        <dxe:TextEdit Text="Some Text" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Item 4 2356">
+                        <dxe:TextEdit Text="Some Text" />
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+
+            <dxlc:LayoutGroup Header="Way 2: GroupFrame is placed inside LayoutGroup, Alignment is not OK" View="GroupBox" Orientation="Vertical">
+                <dx:GroupFrame Header="Group 1">
+                    <dxlc:LayoutGroup>
+                        <dxlc:LayoutItem Label="Item 1 2352365">
+                            <dxe:TextEdit Text="Some Text" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Item 2">
+                            <dxe:TextEdit Text="Some Text" />
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dx:GroupFrame>
+                <dx:GroupFrame Header="Group 2 222222222">
+                    <dxlc:LayoutGroup>
+                        <dxlc:LayoutItem Label="Item 3 1">
+                            <dxe:TextEdit Text="Some Text" />
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Item 4 2356">
+                            <dxe:TextEdit Text="Some Text" />
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dx:GroupFrame>
+            </dxlc:LayoutGroup>
+
+            <dxlc:LayoutGroup Header="Way 3: Special style for LayoutGroup, Alignment is OK" View="GroupBox" Orientation="Vertical">
+                <dxlc:LayoutGroup Header="Group 1 1111" View="GroupBox" GroupBoxStyle="{StaticResource groupBoxStyle}">
+                    <dxlc:LayoutItem Label="Item 1 2352365">
+                        <dxe:TextEdit Text="Some Text" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Item 2">
+                        <dxe:TextEdit Text="Some Text" />
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup Header="Group 2" View="GroupBox" GroupBoxStyle="{StaticResource groupBoxStyle}">
+                    <dxlc:LayoutItem Label="Item 3 1">
+                        <dxe:TextEdit Text="Some Text" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Item 4 2356">
+                        <dxe:TextEdit Text="Some Text" />
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>
